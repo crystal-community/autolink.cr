@@ -17,7 +17,7 @@ describe Autolink do
       http://en.wikipedia.org/wiki/Wikipedia:Today%27s_featured_picture_%28animation%29/January_20%2C_2007
       http://www.mail-archive.com/rails@lists.rubyonrails.org/
       http://www.amazon.com/Testing-Equal-Sign-In-Path/ref=pd_bbs_sr_1?ie=UTF8&s=books&qid=1198861734&sr=8-1
-      http://en.wikipedia.org/wiki/Texas_hold'em
+      http://en.wikipedia.org/wiki/Texas_hold\'em
       https://www.google.com/doku.php?id=gps:resource:scs:start
       http://connect.oraclecorp.com/search?search[q]=green+france&search[type]=Group
       http://of.openfoundry.org/projects/492/download#4th.Release.3
@@ -36,7 +36,7 @@ describe Autolink do
     link_result.should eq auto_link(link_result)
   end
 
-  pending "works with brackets" do
+  it "works with brackets" do
     link1_raw = "http://en.wikipedia.org/wiki/Sprite_(computer_graphics)"
     link1_result = generate_result(link1_raw)
     link1_result.should eq auto_link(link1_raw)
@@ -51,6 +51,11 @@ describe Autolink do
     link3_result = generate_result(link3_raw)
     link3_result.should eq auto_link(link3_raw)
     "{link: #{link3_result}}".should eq auto_link("{link: #{link3_raw}}")
+  end
+
+  it "works with multiple brackets" do
+    link_raw = "http://en.wikipedia.org/(wiki)/Sprite_(computer_graphics)"
+    auto_link("[{((#{link_raw}))}]").should eq "[{((#{generate_result(link_raw)}))}]"
   end
 
   it "accepts HTML options" do
