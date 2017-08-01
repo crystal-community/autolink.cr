@@ -64,7 +64,7 @@ describe Autolink do
     auto_link(text, html: {"class" => "menu", "target" => "_blank"}).should eq result
   end
 
-  pending "accepts multiple trailing punctuations" do
+  it "accepts multiple trailing punctuations" do
     url = "http://youtube.com"
     url_result = generate_result(url)
     url_result.should eq auto_link(url)
