@@ -70,4 +70,9 @@ describe Autolink do
     url_result.should eq auto_link(url)
     "(link: #{url_result}).".should eq auto_link("(link: #{url}).")
   end
+
+  it "ignores trailing <" do
+    url = "https://crystal-lang.org/"
+    "<p>#{generate_result(url)}</p>".should eq auto_link("<p>#{url}</p>")
+  end
 end
