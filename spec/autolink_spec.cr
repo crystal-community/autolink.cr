@@ -75,4 +75,19 @@ describe Autolink do
     url = "https://crystal-lang.org/"
     auto_link("<p>#{url}</p>").should eq "<p>#{generate_result(url)}</p>"
   end
+
+  it "already linked" do
+    contents = [
+      "<a href=\"https://github.com\">https://github.com</a>",
+      "Welcome to my new blog at <a href=\"http://www.myblog.com/\" class=\"menu\" target=\"_blank\">http://www.myblog.com/</a>. Please e-mail me at <a href=\"mailto:me@email.com\" class=\"menu\" target=\"_blank\">me@email.com</a>.",
+      "<a href=\"http://www.example.com\">www.example.com</a>",
+      "<a href=\"http://www.example.com\" rel=\"nofollow\">www.example.com</a>",
+      "<a href=\"http://www.example.com\"><b>www.example.com</b></a>",
+      "<a href=\"#close\">close</a> <a href=\"http://www.example.com\"><b>www.example.com</b></a>",
+      "<a href=\"#close\">close</a> <a href=\"http://www.example.com\" target=\"_blank\" data-ruby=\"ror\"><b>www.example.com</b></a>",
+    ]
+    contents.each do |content|
+      auto_link(content).should eq content
+    end
+  end
 end

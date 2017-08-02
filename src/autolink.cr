@@ -35,10 +35,11 @@ module Autolink
   end
 
   def auto_linked?(left, right)
-    !!((left =~ AUTO_LINK_CRE[0] && right =~ AUTO_LINK_CRE[1]) ||
-      (left.rindex(AUTO_LINK_CRE[2]) && $~.post_match !~ AUTO_LINK_CRE[3]))
-  rescue
-    true
+    return true if (left =~ AUTO_LINK_CRE[0] && right =~ AUTO_LINK_CRE[1])
+    if l = left.rindex(AUTO_LINK_CRE[2])
+      return left[l..-1] !~ AUTO_LINK_CRE[3]
+    end
+    false
   end
 
   def content_tag(tag, text, attributes = {} of String => String)
