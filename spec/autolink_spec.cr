@@ -26,31 +26,31 @@ describe Autolink do
     )
 
     urls.each do |url|
-      generate_result(url).should eq auto_link(url)
+      auto_link(url).should eq generate_result(url)
     end
   end
 
   it "keeps links within tags" do
     link_raw = "http://www.rubyonrails.org/images/rails.png"
     link_result = %Q(<img src="#{link_raw}" />)
-    link_result.should eq auto_link(link_result)
+    auto_link(link_result).should eq link_result
   end
 
   it "works with brackets" do
     link1_raw = "http://en.wikipedia.org/wiki/Sprite_(computer_graphics)"
     link1_result = generate_result(link1_raw)
-    link1_result.should eq auto_link(link1_raw)
-    "(link: #{link1_result})".should eq auto_link("(link: #{link1_raw})")
+    auto_link(link1_raw).should eq link1_result
+    auto_link("(link: #{link1_raw})").should eq "(link: #{link1_result})"
 
     link2_raw = "http://en.wikipedia.org/wiki/Sprite_[computer_graphics]"
     link2_result = generate_result(link2_raw)
-    link2_result.should eq auto_link(link2_raw)
-    "[link: #{link2_result}]".should eq auto_link("[link: #{link2_raw}]")
+    auto_link(link2_raw).should eq link2_result
+    auto_link("[link: #{link2_raw}]").should eq "[link: #{link2_result}]"
 
     link3_raw = "http://en.wikipedia.org/wiki/Sprite_{computer_graphics}"
     link3_result = generate_result(link3_raw)
-    link3_result.should eq auto_link(link3_raw)
-    "{link: #{link3_result}}".should eq auto_link("{link: #{link3_raw}}")
+    auto_link(link3_raw).should eq link3_result
+    auto_link("{link: #{link3_raw}}").should eq "{link: #{link3_result}}"
   end
 
   it "works with multiple brackets" do
@@ -67,12 +67,12 @@ describe Autolink do
   it "accepts multiple trailing punctuations" do
     url = "http://youtube.com"
     url_result = generate_result(url)
-    url_result.should eq auto_link(url)
-    "(link: #{url_result}).".should eq auto_link("(link: #{url}).")
+    auto_link(url).should eq url_result
+    auto_link("(link: #{url}).").should eq "(link: #{url_result})."
   end
 
   it "ignores trailing <" do
     url = "https://crystal-lang.org/"
-    "<p>#{generate_result(url)}</p>".should eq auto_link("<p>#{url}</p>")
+    auto_link("<p>#{url}</p>").should eq "<p>#{generate_result(url)}</p>"
   end
 end
