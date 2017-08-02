@@ -36,8 +36,8 @@ module Autolink
 
   def auto_linked?(left, right)
     return true if (left =~ AUTO_LINK_CRE[0] && right =~ AUTO_LINK_CRE[1])
-    if left.match(AUTO_LINK_CRE[2]) && left.rindex(AUTO_LINK_CRE[2])
-      return $~.post_match !~ AUTO_LINK_CRE[3]
+    if l = left.rindex(AUTO_LINK_CRE[2])
+      return left[l..-1] !~ AUTO_LINK_CRE[3]
     end
     false
   end
