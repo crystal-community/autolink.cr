@@ -1,4 +1,5 @@
 require "./spec_helper"
+require "html"
 
 describe Autolink do
   it "auto link URLs" do
@@ -94,5 +95,8 @@ describe Autolink do
   it "can autolink url having escaped html" do
     link = %q(<a href="example">http://example.com</a>).gsub("<", "&lt;")
     auto_link(link).should eq %q(&lt;a href="example"><a href="http://example.com">http://example.com</a>&lt;/a>)
+
+    link = HTML.escape(%q(<a href="example">http://example.com</a>))
+    auto_link(link).should eq %q(&lt;a href&#61;&quot;example&quot;&gt;<a href="http://example.com">http://example.com</a>&lt;/a&gt;)
   end
 end
