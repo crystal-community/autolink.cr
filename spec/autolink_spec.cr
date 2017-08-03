@@ -90,4 +90,9 @@ describe Autolink do
       auto_link(content).should eq content
     end
   end
+
+  it "can autolink url having escaped html" do
+    link = %q(<a href="example">http://example.com</a>).gsub("<", "&lt;")
+    auto_link(link).should eq %q(&lt;a href="example"><a href="http://example.com">http://example.com</a>&lt;/a>)
+  end
 end
