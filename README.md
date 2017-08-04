@@ -1,4 +1,4 @@
-# Autolink
+# :link: Autolink
 
 *Autolink.cr* is a Crystal shard that automatically turn URLs into links.
 
@@ -40,6 +40,8 @@ Autolink.auto_link("Welcome to my new blog at http://www.myblog.com/")
 ```
 
 ### Custom tag attributes
+
+The ```<a>``` tag can receive custom attributes.
 
 ```crystal
 Autolink.auto_link("My blog: http://www.myblog.com/", html: {"class" => "menu", "target" => "_blank"})
