@@ -60,3 +60,5 @@ Autolink.auto_link("My blog: http://www.myblog.com/", html: {"class" => "menu", 
 
 - [hugoabonizio](https://github.com/hugoabonizio) Hugo Abonizio
 - [veelenga](https://github.com/veelenga) V. Elenhaupt
+
+This project is a port to Crystal of [rails_autolink](https://github.com/tenderlove/rails_autolink) Ruby gem. Thanks to all its [contributors](https://github.com/tenderlove/rails_autolink/graphs/contributors).
