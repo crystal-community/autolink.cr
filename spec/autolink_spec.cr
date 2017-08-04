@@ -103,13 +103,15 @@ describe Autolink do
 
   it "plays well with stdlib markdown" do
     content = <<-EOF
-auto_link("My blog: http://www.myblog.com")
-My blog: <a href="http://www.myblog.com">http://www.myblog.com</a>
-EOF
+      auto_link("My blog: http://www.myblog.com")
+      My blog: <a href="http://www.myblog.com">http://www.myblog.com</a>
+      EOF
+
     expected = <<-EOF
-<p>auto_link("My blog: <a href="http://www.myblog.com">http://www.myblog.com</a>")
-My blog: &lt;a href="http://www.myblog.com">http://www.myblog.com&lt;/a></p>
-EOF
+      <p>auto_link("My blog: <a href="http://www.myblog.com">http://www.myblog.com</a>")
+      My blog: &lt;a href="http://www.myblog.com">http://www.myblog.com&lt;/a></p>
+      EOF
+
     auto_link(Markdown.to_html(content)).should eq expected
   end
 end
