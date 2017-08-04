@@ -1,6 +1,6 @@
-# :link: Autolink
+# :link: Autolink [![Build Status](https://travis-ci.org/hugoabonizio/autolink.cr.svg?branch=master)](https://travis-ci.org/hugoabonizio/autolink.cr)
 
-*Autolink.cr* is a Crystal shard that automatically turn URLs into links.
+*Autolink.cr* is a Crystal shard that automatically turns URLs into links.
 
 Example:
 
