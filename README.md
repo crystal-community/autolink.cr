@@ -27,7 +27,7 @@ require "autolink"
 include Autolink
 
 auto_link("My blog: http://www.myblog.com/", html: {"class" => "menu", "target" => "_blank"})
-# => My blog: <a href=\"http://www.myblog.com/\" class=\"menu\" target=\"_blank\">http://www.myblog.com/</a>
+# => My blog: <a href="http://www.myblog.com/" class="menu" target="_blank">http://www.myblog.com/</a>
 ```
 
 ### Simple autolink
@@ -45,7 +45,7 @@ The ```<a>``` tag can receive custom attributes.
 
 ```crystal
 Autolink.auto_link("My blog: http://www.myblog.com/", html: {"class" => "menu", "target" => "_blank"})
-# => My blog: <a href=\"http://www.myblog.com/\" class=\"menu\" target=\"_blank\">http://
+# => My blog: <a href="http://www.myblog.com/" class="menu" target="_blank">http://www.myblog.com/</a>
 ```
 
 ## Contributing
