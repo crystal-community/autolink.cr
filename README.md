@@ -1,4 +1,4 @@
-# :link: Autolink [![Build Status](https://travis-ci.org/hugoabonizio/autolink.cr.svg?branch=master)](https://travis-ci.org/hugoabonizio/autolink.cr)
+# :link: Autolink [![Build Status](https://travis-ci.org/crystal-community/autolink.cr.svg?branch=master)](https://travis-ci.org/crystal-community/autolink.cr)
 
 *Autolink.cr* is a Crystal shard that automatically turns URLs into links.
 
@@ -16,7 +16,7 @@ Add this to your application's `shard.yml`:
 ```yaml
 dependencies:
   autolink:
-    github: hugoabonizio/autolink.cr
+    github: crystal-community/autolink.cr
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ Autolink.auto_link("My blog: http://www.myblog.com/", html: {"class" => "menu", 
 
 ## Contributing
 
-1. Fork it ( https://github.com/hugoabonizio/autolink.cr/fork )
+1. Fork it ( https://github.com/crystal-community/autolink.cr/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
